@@ -1,10 +1,13 @@
-var TEMPLATE_KEY = 'overlayTemplate';
-var DATA_KEY = 'overlayData';
-var ANIMATION_DURATION = 200;
+import { Template } from "meteor/templating";
+import { Session } from "meteor/session";
+
+const TEMPLATE_KEY = 'overlayTemplate';
+const DATA_KEY = 'overlayData';
+const ANIMATION_DURATION = 200;
 
 Session.setDefault(TEMPLATE_KEY, null);
 
-Overlay = {
+export const Overlay = {
   open: function(template, data) {
     Session.set(TEMPLATE_KEY, template);
     Session.set(DATA_KEY, data);
@@ -54,7 +57,7 @@ Template.overlay.helpers({
   template: function() {
     return Overlay.template();
   },
-  
+
   data: function() {
     return Overlay.data();
   }

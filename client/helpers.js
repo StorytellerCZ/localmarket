@@ -1,4 +1,6 @@
-pluralize = function(n, thing, options) {
+import { Template } from "meteor/templating";
+
+export const pluralize = function(n, thing, options) {
   var plural = thing;
   if (_.isUndefined(n)) {
     return thing;
@@ -15,22 +17,22 @@ pluralize = function(n, thing, options) {
     return n + ' ' + plural;
 }
 
-Handlebars.registerHelper('pluralize', pluralize);
+Template.registerHelper('pluralize', pluralize);
 
-var DIMENSIONS = {
+const DIMENSIONS = {
   small: '320x350',
   large: '640x480',
   full: '640x800'
 };
 
-UI.registerHelper('recipeImage', function(options) {
-  var size = options.hash.size || 'large';
+Template.registerHelper('recipeImage', function(options) {
+  const size = options.hash.size || 'large';
 
   if (options.hash.recipe)
     return '/img/recipes/' + DIMENSIONS[size] + '/' + options.hash.recipe.name + '.jpg';
 });
 
-Handlebars.registerHelper('activePage', function() {
+Template.registerHelper('activePage', function() {
   // includes Spacebars.kw but that's OK because the route name ain't that.
   var routeNames = arguments;
 

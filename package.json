@@ -1,5 +1,7 @@
 {
   "name": "localmarket",
+  "description": "A recipe sharing app made in Meteor.",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "meteor run"

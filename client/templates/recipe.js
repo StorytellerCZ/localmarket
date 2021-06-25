@@ -1,4 +1,10 @@
-var TAB_KEY = 'recipeShowTab';
+import { Template } from "meteor/templating";
+import { Meteor } from "meteor/meteor";
+import { Overlay } from "./overlay";
+import { Session } from "meteor/session";
+import { Activities } from "../../lib/activities";
+
+const TAB_KEY = 'recipeShowTab';
 
 Template.recipe.onCreated(function() {
   if (Router.current().params.activityId)
@@ -32,7 +38,7 @@ Template.recipe.onRendered(function () {
 Template.recipe.setTab = function(tab) {
   var lastTab = Session.get(TAB_KEY);
   Session.set(TAB_KEY, tab);
-  
+
   var fromRecipe = (lastTab === 'recipe') && (tab !== 'recipe');
   $('.feed-scrollable').toggleClass('instant', fromRecipe);
 
@@ -61,7 +67,7 @@ Template.recipe.events({
 
     if (! Meteor.userId())
       return Overlay.open('authOverlay');
-    
+
     Meteor.call('bookmarkRecipe', this.name);
   },
 
@@ -70,17 +76,17 @@ Template.recipe.events({
 
     Meteor.call('unbookmarkRecipe', this.name);
   },
-  
+
   'click .js-show-recipe': function(event) {
     event.stopPropagation();
     Template.recipe.setTab('make')
   },
-  
+
   'click .js-show-feed': function(event) {
     event.stopPropagation();
     Template.recipe.setTab('feed')
   },
-  
+
   'click .js-uncollapse': function() {
     Template.recipe.setTab('recipe')
   },

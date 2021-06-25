@@ -1,3 +1,6 @@
+import { Template } from "meteor/templating";
+import { RecipesData } from "../../lib/recipes-data";
+
 Template.activity.onRendered(function() {
   var self = this;
 

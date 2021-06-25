@@ -1,3 +1,7 @@
+import { Template } from "meteor/templating";
+import { Meteor } from "meteor/meteor";
+import { Overlay } from "./overlay";
+
 // If the auth overlay is on the screen but the user is logged in,
 //   then we have come back from the loginWithTwitter flow,
 //   and the user has successfully signed in.

@@ -1,3 +1,9 @@
+import { Meteor } from "meteor/meteor";
+import { check } from "meteor/check";
+import { BookmarkCounts } from "../lib/bookmarks";
+import { Activities } from "../lib/activities";
+import { News } from "../lib/news";
+
 Meteor.publish('bookmarkCounts', function() {
   return BookmarkCounts.find();
 });
